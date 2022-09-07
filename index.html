@@ -12,6 +12,7 @@
 
     :root {
       --bg-color: #313131;
+      --bg-color2: #181818;
       --primary: #E5E5E5;
       --accent: #e6941a;
     }
@@ -33,7 +34,7 @@
 
     nav {
       display: flex;
-      background-color: #181818; 
+      background-color: var(--bg-color2); 
       padding: 12px;
       margin:0;
       align-items: flex-end;
@@ -41,6 +42,12 @@
 
     nav.mobile {
       display: none;
+    }
+
+    .gallery_container {
+      display:flex;
+      overflow: hidden;
+      padding: 42px;
     }
 
     @media screen and (max-width: 900px) {
@@ -57,6 +64,10 @@
 
       .nav_list {
         display: none;
+      }
+
+      .gallery_container {
+        flex-direction: column;
       }
     }
 
@@ -148,64 +159,109 @@
     }
 
     .section {
-      padding: 12px;
+      /* padding: 68px; */
       margin: 0 auto;
     }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      align-items: center;
-      max-width: 980px;
-      gap: 60px;
-      padding: 20px;
-    }
-
-    .piece {
-      width: 268px;
-      height: 320px;
-      background-color: grey;
-      background-size: cover;
-      background-repeat: no-repeat;
-      box-shadow: 3px 8px 30px -5px black,
-        inset 0px -90px 90px -30px black;
-      transition: all .3s ease-in-out;
-      overflow: hidden;
-      transform: scale(1);
-    }
-
-    .caption {
-      position: absolute;
-      bottom: 0;
-      padding: 0 4px;
-      line-height: 0.8em;
-
-    }
-
-    .piece:hover {
-      transform: scale(1.1)
-    }
-
     
     .hero {
       width:100%;
       height: 85vh;
       background-image: linear-gradient(to bottom right, black, grey);
-      background-image: url('assets/steve-johnson-Xx_d26R37E4-unsplash.jpg');
+      background-image: url('assets/hero.jpg');
       background-attachment: fixed;
       background-clip: border-box;
       background-repeat: no-repeat;
       background-size: cover;
-      box-shadow:inset 0 -90px 90px -90px black,
+      box-shadow:inset 0 -90px 90px -40px black,
         inset 0 90px 90px -90px black;
     }
 
+    .hero_caption {
+      position: absolute;
+      bottom: 0;
+      padding: 24px 16%;
+      line-height: 0.8em;
+    }
     footer {
       padding: 18px;
       text-align: center;
       color: #737373;
     }
+
+    .block {
+      display: inline-block;
+      height: 512px;
+      width: 512px;
+      background-color: grey;
+      margin: 10px;
+      transition: all 1s ease-in-out;
+      opacity:0;
+      box-shadow: 2px 3px 40px -10px black;
+    }
+
+    .left {
+      transform: translateX(-100px);
+    }
+
+    .right {
+      transform: translateX(100px);
+    }
+
+    .text-block {
+      display: inline-block;
+      width: 512px;
+      margin: 10px;
+      transition: all 2.2s ease-in-out;
+      opacity: 0;
+    }
+
+    .text-left {
+      text-align: right;
+    }
+
+    .artists {
+      display:flex;
+      justify-content: center;
+      background-color: var(--bg-color2);
+      width: 100%;
+    }
+
+    .bio_section {
+      transition: all 1s ease-in-out;
+      transform: translateY(100px);
+      opacity: 0;
+      clear: both;
+    }
+
+    .artists_wrapper{
+      background-color: var(--bg-color2);
+      max-width: 980px;
+    }
+
+    .bio_section > * {
+      padding: 12px;
+    }
+
+    .bio_section > img {
+      margin: 10px;
+      border-radius: 50%;
+    }
+
+    .float_left {
+      float: left;
+    }
+
+    .float_right {
+      float: right;
+    }
+
+    .visible {
+      transform: translateX(0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+
 
   </style>
 
@@ -235,23 +291,134 @@
   </nav>
   <main>
     <div class="container">
-      <div class="hero"><p class="caption">Something something something<br><small>by Someone</small><br><br></p></div>
+      <div class="hero"><p class="hero_caption">Something something something<br><small>by Someone</small><br></p></div>
       <div id="gallery" class="section">
         <h1 class="section_heading">gallery</h1>
         <div class="gallery">
-          <div class="piece" style="background-image: url('assets/thumb/steve-johnson-eVaxJVA2zHI-unsplash-thumbnail.jpg')"><p class="caption">Something something something<br><small>by Someone</small></p></div>
-          <div class="piece"><p class="caption">Something something something<br><small>by Someone</small></p></div>
-          <div class="piece"></div>
-          <div class="piece"></div>
-          <div class="piece"></div>
-          <div class="piece"></div>
-          <div class="piece"></div>
-          <div class="piece"></div>
-          <div class="piece"></div>
-          <div class="piece"></div>
+
+          <div class="gallery_container">
+            <div class="block left">
+              <img src="assets/art/golf_ball.jpg" alt="" width="512px" height="512px">
+            </div>
+            <div class="text-block">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="text-block text-left">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+            <div class="block right">
+              <img src="assets/art/city.jpg" alt="" width="512px" heigh="512px">
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="block left">
+              <img src="assets/art/cow.jpg" alt="" width="512px" height="512px">
+            </div>
+            <div class="text-block">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="text-block text-left">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+            <div class="block right">
+              <img src="assets/art/meloncholy.jpg" alt="" width="512px" heigh="512px">
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="block left">
+              <img src="assets/art/mountains.jpg" alt="" width="512px" height="512px">
+            </div>
+            <div class="text-block">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="text-block text-left">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+            <div class="block right">
+              <img src="assets/art/purple_dog.jpg" alt="" width="512px" heigh="512px">
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="block left">
+              <img src="assets/art/red_tree.jpg" alt="" width="512px" height="512px">
+            </div>
+            <div class="text-block">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="text-block text-left">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+            <div class="block right">
+              <img src="assets/art/space_tree.jpg" alt="" width="512px" heigh="512px">
+            </div>
+          </div>
+
+          <div class="gallery_container">
+            <div class="block left">
+              <img src="assets/art/white_bike.jpg" alt="" width="512px" height="512px">
+            </div>
+            <div class="text-block">
+              <h1>Title</h1>
+              <p>artist</p>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div id="artists" class="section">Artists</div>
+      <div id="artists" class="section artists">
+        <div class="artists_wrapper">
+          <h1 class="section_heading">the artists</h1>
+          <div class="bio_section">
+            <img class="float_left" src="assets/artists/Jennifer_Steinkamp.jpg" width="256px" height="256px">
+            <h1>Jennifer Steinkamp</h1>
+            <p>Jennifer Steinkamp is an American installation artist who is best known for her large-scale, animated video projections. Her work often explores the relationship between technology and nature, as well as the human body and space.</p>
+          </div>
+          <div class="bio_section">
+            <img class="float_right" src="assets/artists/Cindy_Sherman.jpg" width="256px" height="256px">
+            <h1>Cindy Sherman</h1>
+            <p>Cindy Sherman is an American photographer and filmmaker who is best known for her conceptual self-portraits. In her work, she often explores the construction of identity and gender.</p>
+          </div>
+          <div class="bio_section">
+            <img class="float_left" src="assets/artists/Julian_Schnabel.jpg" width="256px" height="256px">
+            <h1>Julian Schnabel</h1>
+            <p>Julian Schnabel is an American painter and film director who is best known for his abstract expressionist paintings. He has also directed several films, including the biopic Basquiat.</p>
+          </div>
+          <div class="bio_section">
+            <img class="float_right" src="assets/artists/Paul_Prudhomme.jpg" width="256px" height="256px">
+            <h1>Paul Prudhomme</h1>
+            <p>Paul Prudhomme was a French-American chef who was best known for his Cajun and Creole cuisine. He was also a pioneer in the use of exotic spices and flavors in his dishes.</p>
+          </div>
+          <div class="bio_section">
+            <img class="float_left" src="assets/artists/Robert_Longo.jpg" width="256px" height="256px">
+            <h1>Robert Longo</h1>
+            <p>Robert Longo is an American painter and sculptor who is best known for his large-scale black-and-white drawings. His work often addresses social and political issues, such as violence, war, and consumerism.</p>
+          </div>
+        </div>
+
+      </div>
       <div id="contact" class="section">Contact</div>
     </div>
   </main>
@@ -260,6 +427,34 @@
   </footer>
 
   <script>
+const block = document.querySelectorAll(".block");
+const textBlock = document.querySelectorAll(".text-block");
+const bioBlock = document.querySelectorAll(".bio_section");
+
+function handleObserver(entries) {
+  entries.forEach(entry =>{
+    entry.isIntersecting
+      ? entry.target.classList.add("visible")
+      : entry.target.classList.remove("visible")
+  })
+}
+
+const observer = new IntersectionObserver(
+  handleObserver,
+  { threshold: 0.5 }
+)
+
+block.forEach(block => {
+  observer.observe(block)
+})
+
+textBlock.forEach(block => {
+  observer.observe(block)
+})
+
+bioBlock.forEach(block => {
+  observer.observe(block)
+})
 
   </script>
 </body>
