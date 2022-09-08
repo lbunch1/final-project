@@ -50,6 +50,17 @@
       padding: 42px;
     }
 
+    .block > img {
+      width: 512px;
+      height: auto;
+      max-width: 90vw;
+    }
+    .artists_wrapper {
+      background-color: var(--bg-color2);
+      width: 980px;
+      max-width: 90vw;
+    }
+
     @media screen and (max-width: 900px) {
       nav {
         flex-direction:column;
@@ -68,7 +79,9 @@
 
       .gallery_container {
         flex-direction: column;
+        padding: 6px;
       }
+
     }
 
     .logo_link {
@@ -167,7 +180,7 @@
       width:100%;
       height: 85vh;
       background-image: linear-gradient(to bottom right, black, grey);
-      background-image: url('assets/hero.jpg');
+      background-image: url('assets/00128.jpg');
       background-attachment: fixed;
       background-clip: border-box;
       background-repeat: no-repeat;
@@ -190,8 +203,8 @@
 
     .block {
       display: inline-block;
-      height: 512px;
-      width: 512px;
+      width:fit-content;
+      height: fit-content;
       background-color: grey;
       margin: 10px;
       transition: all 1s ease-in-out;
@@ -210,6 +223,7 @@
     .text-block {
       display: inline-block;
       width: 512px;
+      max-width: 90vw;
       margin: 10px;
       transition: all 2.2s ease-in-out;
       opacity: 0;
@@ -233,10 +247,7 @@
       clear: both;
     }
 
-    .artists_wrapper{
-      background-color: var(--bg-color2);
-      max-width: 980px;
-    }
+
 
     .bio_section > * {
       padding: 12px;
@@ -259,6 +270,47 @@
       transform: translateX(0);
       transform: translateY(0);
       opacity: 1;
+    }
+
+    blockquote {
+      font-style: italic;
+    }
+
+    .text-block > h1,
+    .text-block > p {
+      padding: 0 34px;
+    }
+
+    .text-block > p {
+      font-weight: bold;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      max-width: 980px;
+    }
+
+    .contact_block {
+      max-width: 400px;
+      padding: 60px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight:bold;
+    }
+
+    .contact_heading_wrapper {
+      display:flex;
+      justify-content: center;
+    }
+
+    .contact_heading_wrapper > *{
+      width: 980px;
+      max-width: 90vw;
     }
 
 
@@ -291,25 +343,27 @@
   </nav>
   <main>
     <div class="container">
-      <div class="hero"><p class="hero_caption">Something something something<br><small>by Someone</small><br></p></div>
+      <div class="hero"><p class="hero_caption">The Mystical Forest<br><small>by Jennifer Steinkamp</small><br></p></div>
       <div id="gallery" class="section">
         <h1 class="section_heading">gallery</h1>
         <div class="gallery">
 
           <div class="gallery_container">
             <div class="block left">
-              <img src="assets/art/golf_ball.jpg" alt="" width="512px" height="512px">
+              <img src="assets/art/golf_ball.jpg" alt="">
             </div>
             <div class="text-block">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>The Golden Ball</h1>
+              <p>Jennifer Steinkamp</p>
+              <blockquote>"I painted this ball as a precious object. It is also a symbol of power and wealth."</blockquote>
             </div>
           </div>
 
           <div class="gallery_container">
             <div class="text-block text-left">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>Colorless</h1>
+              <p>Robert Longo</p>
+              <blockquote>"This image represents the feeling of being lost and alone in a big city. The city is full of people, but you feel alone because you don't know anyone."</blockquote>
             </div>
             <div class="block right">
               <img src="assets/art/city.jpg" alt="" width="512px" heigh="512px">
@@ -321,15 +375,17 @@
               <img src="assets/art/cow.jpg" alt="" width="512px" height="512px">
             </div>
             <div class="text-block">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>A Happy Cow Face</h1>
+              <p>Paul Prudhomme</p>
+              <blockquote>"...the cow is happy. The painting is likely meant to represent the joy and happiness that the cow is feeling."</blockquote>
             </div>
           </div>
 
           <div class="gallery_container">
             <div class="text-block text-left">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>The Dance of Life</h1>
+              <p>Julian Schnabel</p>
+              <blockquote>"The painting is abstract, so there is no one specific meaning. However, the broad brush strokes of red, orange, and blue could represent the beauty and chaos of the world."</blockquote>
             </div>
             <div class="block right">
               <img src="assets/art/meloncholy.jpg" alt="" width="512px" heigh="512px">
@@ -341,15 +397,17 @@
               <img src="assets/art/mountains.jpg" alt="" width="512px" height="512px">
             </div>
             <div class="text-block">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>Rudimentary </h1>
+              <p>Paul Prudhomme</p>
+              <blockquote>"The painting is meant to be a representation of a rainbow, which is often seen after a storm. The colors of the rainbow are often seen as a symbol of hope and happiness."</blockquote>
             </div>
           </div>
 
           <div class="gallery_container">
             <div class="text-block text-left">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>Loyalty</h1>
+              <p>Jennifer Steinkamp</p>
+              <blockquote>"It could be interpreted in many ways, but one possible meaning is that the dog represents loyalty and faithfulness."</blockquote>
             </div>
             <div class="block right">
               <img src="assets/art/purple_dog.jpg" alt="" width="512px" heigh="512px">
@@ -361,15 +419,17 @@
               <img src="assets/art/red_tree.jpg" alt="" width="512px" height="512px">
             </div>
             <div class="text-block">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>The Red Tree</h1>
+              <p>Cindy Sherman</p>
+              <blockquote>"Despite the harsh conditions, there is still some life and hope. The red tree is a symbol of this hope."</blockquote>
             </div>
           </div>
 
           <div class="gallery_container">
             <div class="text-block text-left">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>La Arbol de la Vida</h1>
+              <p>Cindy Sherman</p>
+              <blockquote>"The tree is a symbol of life and growth, while the nebula's in the background represent the vastness and beauty of the universe."</blockquote>
             </div>
             <div class="block right">
               <img src="assets/art/space_tree.jpg" alt="" width="512px" heigh="512px">
@@ -381,8 +441,9 @@
               <img src="assets/art/white_bike.jpg" alt="" width="512px" height="512px">
             </div>
             <div class="text-block">
-              <h1>Title</h1>
-              <p>artist</p>
+              <h1>The White Bicycle</h1>
+              <p>Cindy Sherman</p>
+              <blockquote>"...there is no one-size-fits-all answer to this question, as the meaning behind any given painting is ultimately up to interpretation. However, some possible interpretations of this particular painting could include notions of simplicity, peace, or even innocence."</blockquote>
             </div>
           </div>
 
@@ -419,11 +480,27 @@
         </div>
 
       </div>
-      <div id="contact" class="section">Contact</div>
+      <div class="contact_heading_wrapper">
+        <h1 class="section_heading">contact</h1>
+      </div>
+      <div id="contact" class="section contact">
+        <div class="contact_block">
+          a.i. art gallery<br>
+          101001 Silicon Rd.<br>
+          Humantown CA, 01101<br>
+          p: 101-110-0010
+        </div>
+        <div class="contact_block">
+          To contact a human, definitely not an A.I. please email us at: <br>
+          <a href="mailto:humanguy@aiartgallery.com">humanguy@aiartgallery.com</a>
+        </div>
+      </div>
     </div>
   </main>
   <footer>
     copyright&copy; analogue insights <script>new Date().getFullYear()</script> all rights reserved
+    <br><br><br>
+    **Disclaimer** All art, artists, titles and descriptions featured on this page were entirely generated by A.I. software. **
   </footer>
 
   <script>
@@ -441,7 +518,7 @@ function handleObserver(entries) {
 
 const observer = new IntersectionObserver(
   handleObserver,
-  { threshold: 0.5 }
+  { threshold: 0.7 }
 )
 
 block.forEach(block => {
