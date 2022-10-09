@@ -1,539 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analogue Insights Art Gallery</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-
-    :root {
-      --bg-color: #313131;
-      --bg-color2: #181818;
-      --primary: #E5E5E5;
-      --accent: #e6941a;
-    }
-
-    html {
-      padding:0;
-      margin:0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--primary);
-      font-family: 'Prompt', sans-serif;
-      margin:0;
-      padding:0;
-    }
-
-    nav {
-      display: flex;
-      background-color: var(--bg-color2); 
-      padding: 12px;
-      margin:0;
-      align-items: flex-end;
-    }
-
-    nav.mobile {
-      display: none;
-    }
-
-    .gallery_container {
-      display:flex;
-      overflow: hidden;
-      padding: 42px;
-    }
-
-    .block > img {
-      width: 512px;
-      height: auto;
-      max-width: 90vw;
-    }
-    .artists_wrapper {
-      background-color: var(--bg-color2);
-      width: 980px;
-      max-width: 90vw;
-    }
-
-    .logo_link {
-      text-decoration: none;
-      width:fit-content;
-    }
-
-    .logo {
-      color: var(--primary);
-      border-radius: 36px;
-      padding: 4px;
-      width: fit-content;
-      font-size: 3.6em;
-      font-weight: bolder;
-      text-decoration: none;
-    }
-
-    .long_title {
-      font-size: 1.6em;
-      padding: 18px;
-      font-family: 'Dancing Script', cursive, serif;
-      font-style: italic;
-    }
-
-    .section_heading {
-      font-family: 'Dancing Script', cursive, serif;
-      padding-left: 20px;
-      font-size:3em;
-    }
-
-    .nav_list {
-      list-style-type: none;
-      margin-left: auto;
-      margin-right: 5%;
-      font-size: 1.2em;
-    }
-
-
-    .nav_list_mobile {
-      list-style-type: none;
-    }
-
-
-    .mobile > details > ul {
-      margin: 0;
-      padding: 2px;
-
-    }
-
-    .mobile > details > summary {
-      cursor: pointer;
-      font-size: 1.9em;
-      transition: all .6s linear;
-    }
-
-    .mobile > details > summary:hover {
-      color: var(--accent);
-    }
-
-    .nav_list_mobile * {
-
-      text-decoration: none;
-      color: var(--primary);
-      font-size: 1.3em;
-      padding: 0 8px;
-      transition: all .6s linear;
-    }
-
-    .nav_list_mobile *:hover {
-      color: var(--accent);
-    }
-
-    .nav_list * {
-      text-decoration: none;
-      color: var(--primary);
-      display: inline-block;
-      font-size: 1.3em;
-      padding: 0 8px;
-      transition: all .6s linear;
-    }
-
-    .nav_list *:hover {
-      color: var(--accent);
-    }
-
-    .container {
-      display: grid;
-    }
-
-    .section {
-      /* padding: 68px; */
-      margin: 0 auto;
-    }
-    
-    .hero {
-      width:100%;
-      height: 85vh;
-      background-image: linear-gradient(to bottom right, black, grey);
-      background-image: url('assets/00128.jpg');
-      background-attachment: fixed;
-      background-clip: border-box;
-      background-repeat: no-repeat;
-      background-size: cover;
-      box-shadow:inset 0 -90px 90px -40px black,
-        inset 0 90px 90px -90px black;
-    }
-
-    .hero_caption {
-      position: absolute;
-      bottom: 0;
-      padding: 24px 16%;
-      line-height: 0.8em;
-    }
-    footer {
-      padding: 18px;
-      text-align: center;
-      color: #737373;
-    }
-
-    .block {
-      display: inline-block;
-      width:fit-content;
-      height: fit-content;
-      background-color: grey;
-      margin: 10px;
-      transition: all 1s ease-in-out;
-      opacity:0;
-      box-shadow: 2px 3px 40px -10px black;
-    }
-
-    .left {
-      transform: translateX(-100px);
-    }
-
-    .right {
-      transform: translateX(100px);
-    }
-
-    .text-block {
-      display: inline-block;
-      width: 512px;
-      max-width: 90vw;
-      margin: 10px;
-      transition: all 2.2s ease-in-out;
-      opacity: 0;
-    }
-
-    .text-left {
-      text-align: right;
-    }
-
-    .artists {
-      display:flex;
-      justify-content: center;
-      background-color: var(--bg-color2);
-      width: 100%;
-    }
-
-    .bio_section {
-      transition: all 1s ease-in-out;
-      /* transform: translateY(100px); */
-      opacity: 0;
-      clear: both;
-    }
-
-
-
-    .bio_section > * {
-      padding: 12px;
-    }
-
-    .bio_section > img {
-      margin: 10px;
-      border-radius: 50%;
-    }
-
-    .float_left {
-      float: left;
-    }
-
-    .float_right {
-      float: right;
-    }
-
-    .visible {
-      transform: translateX(0);
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    blockquote {
-      font-style: italic;
-    }
-
-    .text-block > h1,
-    .text-block > p {
-      padding: 0 34px;
-    }
-
-    .text-block > p {
-      font-weight: bold;
-    }
-
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      max-width: 980px;
-    }
-
-    .contact_block {
-      max-width: 400px;
-      padding: 60px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight:bold;
-    }
-
-    .contact_heading_wrapper {
-      display:flex;
-      justify-content: center;
-    }
-
-    .contact_heading_wrapper > *{
-      width: 980px;
-      max-width: 90vw;
-    }
-
-    @media screen and (max-width: 900px) {
-      nav {
-        flex-direction:column;
-        align-items:flex-start;
-        padding: 0 4px;
-      }
-
-      nav.mobile {
-        display: block;
-        padding: 10px;
-      }
-
-      .nav_list {
-        display: none;
-      }
-
-      .gallery_container {
-        flex-direction: column;
-        padding: 6px;
-      }
-
-    }
-
-
-  </style>
-
-
-</head>
-<body>
-  <nav>
-    <a class="logo_link" href="#"><div class="logo">{a.i.}</div></a>
-    <span class="long_title">analogue insights art gallery</span>
-    <ul class="nav_list">
-      <li><a href="#gallery">gallery</a></li>
-      <li><a href="#artists">artists</a></li>
-      <li><a href="#contact">contact</a></li>
-
-    </ul>
-  </nav>
-  <nav class="mobile">
-    <details>
-      <summary>menu</summary>
-      <ul class="nav_list_mobile">
-        <li><a href="#gallery">gallery</a></li>
-        <li><a href="#artists">artists</a></li>
-        <li><a href="#contact">contact</a></li>
-  
-      </ul>
-    </details>
-  </nav>
-  <main>
-    <div class="container">
-      <div class="hero"><p class="hero_caption">The Mystical Forest<br><small>by Jennifer Steinkamp</small><br></p></div>
-      <div id="gallery" class="section">
-        <h1 class="section_heading">gallery</h1>
-        <div class="gallery">
-
-          <div class="gallery_container">
-            <div class="block left">
-              <img src="assets/art/golf_ball.jpg" alt="">
-            </div>
-            <div class="text-block">
-              <h1>The Golden Ball</h1>
-              <p>Jennifer Steinkamp</p>
-              <blockquote>"I painted this ball as a precious object. It is also a symbol of power and wealth."</blockquote>
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="text-block text-left">
-              <h1>Colorless</h1>
-              <p>Robert Longo</p>
-              <blockquote>"This image represents the feeling of being lost and alone in a big city. The city is full of people, but you feel alone because you don't know anyone."</blockquote>
-            </div>
-            <div class="block right">
-              <img src="assets/art/city.jpg" alt="" width="512px" heigh="512px">
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="block left">
-              <img src="assets/art/cow.jpg" alt="" width="512px" height="512px">
-            </div>
-            <div class="text-block">
-              <h1>A Happy Cow Face</h1>
-              <p>Paul Prudhomme</p>
-              <blockquote>"...the cow is happy. The painting is likely meant to represent the joy and happiness that the cow is feeling."</blockquote>
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="text-block text-left">
-              <h1>The Dance of Life</h1>
-              <p>Julian Schnabel</p>
-              <blockquote>"The painting is abstract, so there is no one specific meaning. However, the broad brush strokes of red, orange, and blue could represent the beauty and chaos of the world."</blockquote>
-            </div>
-            <div class="block right">
-              <img src="assets/art/meloncholy.jpg" alt="" width="512px" heigh="512px">
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="block left">
-              <img src="assets/art/mountains.jpg" alt="" width="512px" height="512px">
-            </div>
-            <div class="text-block">
-              <h1>Rudimentary </h1>
-              <p>Paul Prudhomme</p>
-              <blockquote>"The painting is meant to be a representation of a rainbow, which is often seen after a storm. The colors of the rainbow are often seen as a symbol of hope and happiness."</blockquote>
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="text-block text-left">
-              <h1>Loyalty</h1>
-              <p>Jennifer Steinkamp</p>
-              <blockquote>"It could be interpreted in many ways, but one possible meaning is that the dog represents loyalty and faithfulness."</blockquote>
-            </div>
-            <div class="block right">
-              <img src="assets/art/purple_dog.jpg" alt="" width="512px" heigh="512px">
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="block left">
-              <img src="assets/art/red_tree.jpg" alt="" width="512px" height="512px">
-            </div>
-            <div class="text-block">
-              <h1>The Red Tree</h1>
-              <p>Cindy Sherman</p>
-              <blockquote>"Despite the harsh conditions, there is still some life and hope. The red tree is a symbol of this hope."</blockquote>
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="text-block text-left">
-              <h1>La Arbol de la Vida</h1>
-              <p>Cindy Sherman</p>
-              <blockquote>"The tree is a symbol of life and growth, while the nebula's in the background represent the vastness and beauty of the universe."</blockquote>
-            </div>
-            <div class="block right">
-              <img src="assets/art/space_tree.jpg" alt="" width="512px" heigh="512px">
-            </div>
-          </div>
-
-          <div class="gallery_container">
-            <div class="block left">
-              <img src="assets/art/white_bike.jpg" alt="" width="512px" height="512px">
-            </div>
-            <div class="text-block">
-              <h1>The White Bicycle</h1>
-              <p>Cindy Sherman</p>
-              <blockquote>"...there is no one-size-fits-all answer to this question, as the meaning behind any given painting is ultimately up to interpretation. However, some possible interpretations of this particular painting could include notions of simplicity, peace, or even innocence."</blockquote>
-            </div>
-          </div>
-
-        </div>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="print.css" media="print">
+    <title>Analogue Instights - Art Gallery</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="logo">{a.i.}</span>
+        <span class="long_title">analogue insights art gallery</span>
       </div>
-      <div id="artists" class="section artists">
-        <div class="artists_wrapper">
-          <h1 class="section_heading">the artists</h1>
-          <div class="bio_section">
-            <img class="float_left" src="assets/artists/Jennifer_Steinkamp.jpg" width="256px" height="256px">
-            <h1>Jennifer Steinkamp</h1>
-            <p>Jennifer Steinkamp is an American installation artist who is best known for her large-scale, animated video projections. Her work often explores the relationship between technology and nature, as well as the human body and space.</p>
-          </div>
-          <div class="bio_section">
-            <img class="float_right" src="assets/artists/Cindy_Sherman.jpg" width="256px" height="256px">
-            <h1>Cindy Sherman</h1>
-            <p>Cindy Sherman is an American photographer and filmmaker who is best known for her conceptual self-portraits. In her work, she often explores the construction of identity and gender.</p>
-          </div>
-          <div class="bio_section">
-            <img class="float_left" src="assets/artists/Julian_Schnabel.jpg" width="256px" height="256px">
-            <h1>Julian Schnabel</h1>
-            <p>Julian Schnabel is an American painter and film director who is best known for his abstract expressionist paintings. He has also directed several films, including the biopic Basquiat.</p>
-          </div>
-          <div class="bio_section">
-            <img class="float_right" src="assets/artists/Paul_Prudhomme.jpg" width="256px" height="256px">
-            <h1>Paul Prudhomme</h1>
-            <p>Paul Prudhomme was a French-American chef who was best known for his Cajun and Creole cuisine. He was also a pioneer in the use of exotic spices and flavors in his dishes.</p>
-          </div>
-          <div class="bio_section">
-            <img class="float_left" src="assets/artists/Robert_Longo.jpg" width="256px" height="256px">
-            <h1>Robert Longo</h1>
-            <p>Robert Longo is an American painter and sculptor who is best known for his large-scale black-and-white drawings. His work often addresses social and political issues, such as violence, war, and consumerism.</p>
+      <div class="menu-wrapper">
+        <div class="mobile-menu-toggle">
+          <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
           </div>
         </div>
-
+        <nav>
+          <ul>
+            <li><a href="#gallery">gallery</a></li>
+            <li><a href="#artists">artists</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="contact_heading_wrapper">
-        <h1 class="section_heading">contact</h1>
-      </div>
-      <div id="contact" class="section contact">
-        <div class="contact_block">
-          a.i. art gallery<br>
-          101001 Silicon Rd.<br>
-          Humantown CA, 01101<br>
-          p: 101-110-0010
-        </div>
-        <div class="contact_block">
-          To contact a human, definitely not an A.I. please email us at: <br>
-          <a href="mailto:humanguy@aiartgallery.com">humanguy@aiartgallery.com</a>
-        </div>
-      </div>
+    </header>
+    <div class="hero" title="Painting - The Mystical Forest by Jennifer Steinkamp">
+      <p class="hero-caption">
+        The Mystical Forest<br><small>by Jennifer Steinkamp</small>
+      </p>
     </div>
-  </main>
-  <footer>
-    copyright&copy; analogue insights <script>new Date().getFullYear()</script> all rights reserved
-    <br><br><br>
-    **Disclaimer** All art, artists, titles and descriptions featured on this page were entirely generated by A.I. software. **
-  </footer>
+    <main>
+      <section id="gallery">
+        <div>
+          <h2 class="section-header">gallery</h2>
+          <div class="card">
+            <div class="gallery-image">
+              <img
+                src="assets/art/golf_ball.jpg"
+                alt="Painting of a golf ball"
+              />
+            </div>
+            <div class="gallery-description">
+              <h2>The Golden Ball</h2>
+              <p>Jennifer Steinkamp</p>
+              <blockquote>
+                "I painted this ball as a precious object. It is also a symbol
+                of power and wealth."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card reverse">
+            <div class="gallery-image">
+              <img
+                src="assets/art/city.jpg"
+                alt="Painting of a colorless city"
+              />
+            </div>
+            <div class="gallery-description">
+              <h2>Colorless</h2>
+              <p>Robert Longo</p>
+              <blockquote>
+                "This image represents the feeling of being lost and alone in a
+                big city. The city is full of people, but you feel alone because
+                you don't know anyone."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card">
+            <div class="gallery-image">
+              <img
+                src="assets/art/cow.jpg" 
+                alt="Painting of a cow" 
+                />
+            </div>
+            <div class="gallery-description">
+              <h2>A Happy Cow Face</h2>
+              <p>Paul Prudhomme</p>
+              <blockquote>
+                "...the cow is happy. The painting is likely meant to represent
+                the joy and happiness that the cow is feeling."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card reverse">
+            <div class="gallery-image">
+              <img 
+                src="assets/art/meloncholy.jpg" 
+                alt="Abstract oil painting" 
+                />
+            </div>
+            <div class="gallery-description">
+              <h2>The Dance of Life</h2>
+              <p>Julian Schnabel</p>
+              <blockquote>
+                "The painting is abstract, so there is no one specific meaning.
+                However, the broad brush strokes of red, orange, and blue could
+                represent the beauty and chaos of the world."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card">
+            <div class="gallery-image">
+              <img 
+                src="assets/art/mountains.jpg" 
+                alt="Painting of brightly colored mountains" 
+                />
+            </div>
+            <div class="gallery-description">
+              <h2>Rudimentary</h2>
+              <p>Paul Prudhomme</p>
+              <blockquote>
+                "The painting is meant to be a representation of a rainbow,
+                which is often seen after a storm. The colors of the rainbow are
+                often seen as a symbol of hope and happiness."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card reverse">
+            <div class="gallery-image">
+              <img 
+                src="assets/art/purple_dog.jpg" 
+                alt="Painting of a purple dog" 
+                />
+            </div>
+            <div class="gallery-description">
+              <h2>Loyalty</h2>
+              <p>Jennifer Steinkamp</p>
+              <blockquote>
+                "It could be interpreted in many ways, but one possible meaning
+                is that the dog represents loyalty and faithfulness."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card">
+            <div class="gallery-image">
+              <img 
+                src="assets/art/red_tree.jpg" 
+                alt="Painting of a red tree" 
+                />
+            </div>
+            <div class="gallery-description">
+              <h2>The Red Tree</h2>
+              <p>Cindy Sherman</p>
+              <blockquote>
+                "Despite the harsh conditions, there is still some life and
+                hope. The red tree is a symbol of this hope."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card reverse">
+            <div class="gallery-image">
+              <img 
+              src="assets/art/space_tree.jpg" 
+              alt="Painting of a tree in space" 
+              />
+            </div>
+            <div class="gallery-description">
+              <h2>La Arbol de la Vida</h2>
+              <p>Cindy Sherman</p>
+              <blockquote>
+                "The tree is a symbol of life and growth, while the nebula's in
+                the background represent the vastness and beauty of the
+                universe."
+              </blockquote>
+            </div>
+          </div>
+          <div class="card">
+            <div class="gallery-image">
+              <img 
+                src="assets/art/white_bike.jpg" 
+                alt="Painting of a white bike" 
+                />
+            </div>
+            <div class="gallery-description">
+              <h2>The White Bicycle</h2>
+              <p>Cindy Sherman</p>
+              <blockquote>
+                "...there is no one-size-fits-all answer to this question, as
+                the meaning behind any given painting is ultimately up to
+                interpretation. However, some possible interpretations of this
+                particular painting could include notions of simplicity, peace,
+                or even innocence."
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="artists">
+        <div>
+          <h2 class="section-header">artists</h2>
+          <div class="card">
+            <img
+              class="artist-image"
+              src="assets/artists/Jennifer_Steinkamp.jpg"
+              alt="Head shot of artist Jennifer Steinkamp"
+            />
 
-  <script>
-const block = document.querySelectorAll(".block");
-const textBlock = document.querySelectorAll(".text-block");
-const bioBlock = document.querySelectorAll(".bio_section");
+            <div class="artist-bio">
+              <h2>Jennifer Steinkamp</h2>
+              <p>
+                Jennifer Steinkamp is an American installation artist who is
+                best known for her large-scale, animated video projections. Her
+                work often explores the relationship between technology and
+                nature, as well as the human body and space.
+              </p>
+            </div>
+          </div>
+          <div class="card reverse">
+            <img
+              class="artist-image"
+              src="assets/artists/Cindy_Sherman.jpg"
+              alt="Head shot of artist Cindy Sherman"
+            />
+            <div class="artist-bio">
+              <h2>Cindy Sherman</h2>
+              <p>
+                Cindy Sherman is an American photographer and filmmaker who is
+                best known for her conceptual self-portraits. In her work, she
+                often explores the construction of identity and gender.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="artist-image"
+              src="assets/artists/Julian_Schnabel.jpg"
+              alt="Head shot of artist Julian Schnabel"
+            />
+            <div class="artist-bio">
+              <h2>Julian Schnabel</h2>
+              <p>
+                Julian Schnabel is an American painter and film director who is
+                best known for his abstract expressionist paintings. He has also
+                directed several films, including the biopic Basquiat.
+              </p>
+            </div>
+          </div>
+          <div class="card reverse">
+            <img
+              class="artist-image"
+              src="assets/artists/Paul_Prudhomme.jpg"
+              alt="Head shot of artist Paul Prudhomme"
+            />
+            <div class="artist-bio">
+              <h2>Paul Prudhomme</h2>
+              <p>
+                Paul Prudhomme was a French-American chef who was best known for
+                his Cajun and Creole cuisine. He was also a pioneer in the use
+                of exotic spices and flavors in his dishes.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="artist-image"
+              src="assets/artists/Robert_Longo.jpg"
+              alt="Head shot of artist Robert Longo"
+            />
+            <div class="artist-bio">
+              <h2>Robert Longo</h2>
+              <p>
+                Robert Longo is an American painter and sculptor who is best
+                known for his large-scale black-and-white drawings. His work
+                often addresses social and political issues, such as violence,
+                war, and consumerism.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <div>
+          <h2 class="section-header">contact</h2>
+          <div class="contact-card">
+            <div class="contact-block">
+              a.i. art gallery<br>
+              101001 Silicon Rd.<br>
+              Humantown CA, 01101<br>
+              p: <a href="tel:1011100010">101-110-0010</a>
+            </div>
+            <div class="contact-block">
+              To contact a human, definitely not an A.I. please email us at:
+              <br>
+              <a href="mailto:humanguy@aiartgallery.com">humanguy@aiartgallery.com</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Copyright &copy;&nbsp;
+        <a href="mailto:info@aigallery.com">Analogue Insights</a>&nbsp;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+      </p>
+      <br>
+      <p>
+        **Disclaimer** All art, artists, titles and descriptions featured on
+        this page were entirely generated by A.I. software. **
+      </p>
+    </footer>
+    <script>
+      const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+      const mobileMenu = document.querySelector("nav");
+      const card = document.querySelectorAll(".card");
 
-function handleObserver(entries) {
-  entries.forEach(entry =>{
-    entry.isIntersecting
-      ? entry.target.classList.add("visible")
-      : entry.target.classList.remove("visible")
-  })
-}
+      function handleMobileMenuToggle(e) {
+        e.preventDefault();
+        mobileMenu.classList.toggle("show");
+        mobileMenuToggle.classList.toggle("open");
+      }
 
-const observer = new IntersectionObserver(
-  handleObserver,
-  { 
-    threshold: .7
-  }
-)
+      mobileMenuToggle.addEventListener("click", handleMobileMenuToggle);
 
-block.forEach(block => {
-  observer.observe(block)
-})
+      function handleObserver(entries) {
+        entries.forEach((entry) => {
+          console.log(entry);
+          if (entry.isIntersecting) {
+            entry.target.children[0].classList.add("visible");
+            entry.target.children[1].classList.add("visible");
+          } else {
+            entry.target.children[0].classList.remove("visible");
+            entry.target.children[1].classList.remove("visible");
+          }
+        });
+      }
 
-textBlock.forEach(block => {
-  observer.observe(block)
-})
+      const observer = new IntersectionObserver(handleObserver, {
+        threshold: 0.5,
+      });
 
-bioBlock.forEach(block => {
-  observer.observe(block)
-})
-
-  </script>
-</body>
+      card.forEach((block) => {
+        observer.observe(block);
+      });
+    </script>
+  </body>
 </html>

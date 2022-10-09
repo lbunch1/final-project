@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+
+:root {
+  --bg-color: #313131;
+  --bg-color2: #181818;
+  --primary: #e5e5e5;
+  --accent: #e6941a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--primary);
+  font-family: "Prompt", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color)
+}
+
+blockquote {
+  font-style: italic;
+}
+
+a:link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem .5rem;
+  background-color: var(--bg-color2);
+}
+
+.logo {
+  color: var(--primary);
+  border-radius: 36px;
+  padding: 4px;
+  width: fit-content;
+  font-size: 3.6em;
+  font-weight: bolder;
+}
+
+.long_title {
+  font-size: 1.6em;
+  padding: 18px;
+  font-family: "Dancing Script", cursive, serif;
+  font-style: italic;
+}
+
+.menu-wrapper {
+  align-self: flex-end;
+}
+
+nav, nav.show {
+  display: flex;
+  align-items: flex-end;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+nav ul li {
+  padding: 0.5em 1em;
+  font-size: 1.3em;
+}
+
+nav ul li a:link {
+  text-decoration: none;
+  color: var(--primary);
+  transition: all .2s linear
+}
+
+nav ul li a:hover {
+  color: var(--accent)
+}
+
+.mobile-menu-toggle {
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 1em;
+}
+
+
+.bar {
+  background-color: white;
+  width: 2em;
+  height: .3em;
+  border-radius: 5px;
+  margin-bottom: .25em;
+  transform-origin: center;
+  transition: all .3s linear;
+}
+
+.hero {
+  display: flex;
+  background-image: url('/assets/00128.jpg');
+  background-attachment: fixed;
+  background-clip: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 -90px 90px -40px black,
+    inset 0 90px 90px -90px black;
+  height: 90vh;
+  color: white;
+  font-size: 4em;
+}
+
+.hero-caption {
+  position: absolute;
+  bottom: 0;
+  font-size: .3em;
+  padding: 0;
+  margin: 5px 3rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+#artists {
+  background-color: var(--bg-color2)
+}
+
+.section-header {
+  font-family: "Dancing Script", cursive, serif;
+  font-size: 3em;
+  padding: 3rem;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 3rem 0;
+  max-width: 100%;
+}
+
+.contact-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 3rem 0;
+  max-width: 100%;
+}
+
+.gallery-image {
+  transform: translateX(-80px);
+  opacity: 0;
+  transition: all .4s ease-in;
+}
+
+.gallery-image img {
+  max-width: 100%;
+  box-shadow: 2px 3px 40px -10px black;
+}
+
+.gallery-description {
+  max-width: 400px;
+  padding: 1em;
+  opacity: 0;
+  transition: all .4s ease-in;
+}
+
+.gallery-description > * {
+  padding: 1em 0;
+}
+
+.artist-image {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  opacity:0;
+  transition: all .4s ease-in;
+}
+
+.artist-bio {
+  max-width: 500px;
+  padding: 1em;
+  opacity: 0;
+  transition: all .4s ease-in;
+}
+
+.artist-bio > * {
+  padding: 1em 0;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.reverse > .gallery-image {
+  transform: translateX(80px);
+}
+
+.contact-block {
+  text-align: left;
+  max-width: 400px;
+  min-width: 200px;
+  padding: 1em;
+}
+
+.visible, .reverse > .visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 3rem;
+  color: var(--primary)
+}
+
+@media only screen and (max-width: 925px) {
+  .reverse, .card {
+    text-align: center;
+  }
+
+}
+
+@media only screen and (max-width: 680px) {
+  .logo, .long-title {
+    display: block;
+  }
+  .mobile-menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+  .menu-wrapper {
+    display:flex;
+    flex-direction: column;
+  }
+  .open * .bar:first-of-type {
+    transform: rotate(45deg) translateY(.8em)
+  }
+  .open * .bar:nth-of-type(2) {
+    visibility: hidden;
+  }
+  .open * .bar:nth-of-type(3) {
+    transform: rotate(-45deg) translateY(-.8em)
+  }
+
+  nav {
+    display: none;
+  }
+  nav.show {
+    display: flex;
+  }
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav a {
+    font-size: 1.5em;
+  }
+
+}

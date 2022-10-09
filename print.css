@@ -1,0 +1,110 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:link {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a::after {
+  content: " (" attr(href) " )"
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem .5rem;
+  background-color: white;
+  color: black;
+}
+
+nav, nav.show {
+  display: none;
+  align-items: flex-end;
+}
+
+
+.hero {
+  display: none;
+  height: 300px;
+  background-color: white;
+  color: black;
+  font-size: 48pt;
+}
+
+main {
+  /* display: flex; */
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+section {
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#artists {
+  page-break-before: always;
+}
+
+#contact {
+  page-break-before: always;
+}
+
+.section-header {
+  font-size: 28pt;
+  padding: 3rem;
+  color: black;
+}
+
+.card {
+  justify-content: center;
+  padding: 3rem;
+}
+
+
+
+.gallery-description {
+  min-width: 340px;
+  max-width:400px;
+  padding: 1em;
+}
+
+.artist-image {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+}
+
+.artist-bio {
+  min-width: 340px;
+  max-width: 400px;
+  padding: 1em;
+}
+
+.contact-block {
+  min-width: 340px;
+  max-width: 400px;
+  background-color: white;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+  color: black;
+  background-color: white
+}
