@@ -324,7 +324,6 @@
 
       function handleObserver(entries) {
         entries.forEach((entry) => {
-          console.log(entry);
           if (entry.isIntersecting) {
             entry.target.children[0].classList.add("visible");
             entry.target.children[1].classList.add("visible");
