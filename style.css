@@ -97,7 +97,7 @@ nav ul li a:hover {
 
 
 .bar {
-  background-color: white;
+  background-color: var(--primary);
   width: 2em;
   height: .3em;
   border-radius: 5px;
@@ -108,7 +108,7 @@ nav ul li a:hover {
 
 .hero {
   display: flex;
-  background-image: url('/assets/00128.jpg');
+  background-image: url('assets/hero_background.jpg');
   background-attachment: fixed;
   background-clip: border-box;
   background-repeat: no-repeat;
@@ -266,6 +266,9 @@ footer {
   }
   .open * .bar:nth-of-type(3) {
     transform: rotate(-45deg) translateY(-.8em)
+  }
+  .open .bar {
+    background-color: var(--accent);
   }
 
   nav {
