@@ -121,8 +121,7 @@ nav ul li a:hover {
 }
 
 .hero-caption {
-  position: absolute;
-  bottom: 0;
+  align-self: flex-end;
   font-size: .3em;
   padding: 0;
   margin: 5px 3rem;
